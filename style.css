@@ -1,0 +1,258 @@
+.theme-light {
+  --background-img-mobile: url("./images/bg-mobile-light.jpg");
+  --background-img-desktop: url("./images/bg-desktop-light.jpg");
+  --main-bg: hsl(0, 0%, 98%);
+  --body-bg: hsl(236, 33%, 92%);
+  --todo-border: hsl(233, 11%, 84%);
+  --btn-filter-bg_hover: hsl(235, 19%, 35%);
+  --btn-filter-bg_active: hsl(220, 98%, 61%);
+  --btn-bg: hsl(234, 11%, 52%);
+  --font-color: hsl(237, 14%, 26%);
+}
+
+.theme-dark {
+  --background-img-mobile: url("./images/bg-mobile-dark.jpg");
+  --background-img-desktop: url("./images/bg-desktop-dark.jpg");
+  --body-bg: hsl(235, 21%, 11%);
+  --main-bg: hsl(235, 24%, 19%);
+  --todo-border: hsl(237, 14%, 26%);
+  --btn-filter-bg_hover: hsl(236, 33%, 92%);
+  --btn-filter-bg_active: hsl(220, 98%, 61%);
+  --btn-bg: hsl(234, 11%, 52%);
+  --font-color: hsl(234, 39%, 85%);
+  --font-color_hover: hsl(236, 33%, 92%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  height: 100vh;
+  background-color: var(--body-bg);
+  background-image: var(--background-img-mobile);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all 0.3s;
+}
+
+.container {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+/*General design for each task container*/
+input[type="checkbox"] {
+  width: 15%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+label {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--todo-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+input[type="checkbox"]:hover ~ label {
+  border: 1px solid hsl(220, 98%, 61%);
+}
+
+input[type="checkbox"]:checked ~ label {
+  background: center url("./images/icon-check.svg") no-repeat,
+    linear-gradient(to bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: none;
+}
+
+.container {
+  max-width: 645px;
+}
+.container .header-Todo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.container .header-Todo h1 {
+  color: #fff;
+  font-size: 2em;
+  letter-spacing: 10px;
+}
+.container .header-Todo .iconTheme {
+  width: 26px;
+  height: 26px;
+  margin-left: auto;
+  border: none;
+  cursor: pointer;
+}
+.container .header-Todo .iconTheme.dark {
+  background: url("./images/icon-sun.svg");
+}
+.container .header-Todo .iconTheme.light {
+  background: url("./images/icon-moon.svg");
+}
+.container .form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: var(--main-bg);
+}
+.container .form input[type="text"] {
+  width: 90%;
+  margin-left: 15%;
+  height: 40px;
+  border: none;
+  outline: none;
+  color: var(--font-color);
+  font-family: inherit;
+  font-size: 1em;
+  background: none;
+}
+
+.container .form input[type="text"]::placeholder {
+  color: hsl(234, 11%, 52%);
+}
+
+main {
+  border-radius: 5px;
+  background-color: var(--main-bg);
+}
+
+main .todo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border-bottom: 1px solid var(--todo-border);
+}
+main .todo input[type="checkbox"] {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+main .todo input[type="checkbox"]:checked ~ .todo-text {
+  text-decoration: line-through;
+  color: hsl(234, 11%, 52%);
+}
+main .todo .todo-text {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  padding: 20px 0;
+  margin-left: 15%;
+  color: var(--font-color);
+  cursor: pointer;
+}
+main .todo .todo-text:hover {
+  color: var(--font-color_hover);
+}
+main .todo .delete {
+  position: absolute;
+  opacity: 1;
+  width: 10%;
+  height: 100%;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+main .todo:hover > .delete {
+  opacity: 1;
+}
+main .main-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 10px 20px;
+}
+main .main-footer button {
+  padding: 5px 10px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: hsl(234, 11%, 52%);
+  cursor: pointer;
+  transition: 0.3s;
+}
+main .main-footer .btnFilter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--main-bg);
+  border-radius: 5px;
+}
+main .main-footer .btnFilter button {
+  font-weight: bold;
+  padding: 20px 10px;
+}
+main .main-footer .btnFilter button:hover {
+  color: var(--btn-filter-bg_hover);
+}
+main .main-footer .btnFilter button.active {
+  color: var(--btn-filter-bg_active);
+}
+main .main-footer .itemsLeft {
+  color: var(--btn-bg);
+}
+main .main-footer .btnBox .clearAllBtn {
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: var(--btn-bg);
+  cursor: pointer;
+  transition: 0.3s;
+}
+main .main-footer .btnBox .clearAllBtn:hover {
+  color: var(--btn-filter-bg_hover);
+}
+
+@media only screen and (min-width: 520px) {
+  body {
+    background-image: var(--background-img-desktop);
+  }
+  .container {
+    margin: 0 auto;
+  }
+  .container .main-footer .btnFilter {
+    position: static;
+    transform: none;
+    width: 0;
+  }
+  .container .main-footer .btnFilter button {
+    font-weight: bold;
+    padding: 0 10px;
+  }
+}
+
